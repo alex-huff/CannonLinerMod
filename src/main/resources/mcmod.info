@@ -1,8 +1,8 @@
 [
 {
-  "modid": "cannontracermod",
-  "name": "Cannon Tracer Mod",
-  "description": "Client mod for servers with the CannonTracer plugin.",
+  "modid": "cannonlinermod",
+  "name": "Cannon Liner Mod",
+  "description": "Client mod for firing cannons from Schematica.",
   "version": "${version}",
   "mcversion": "${mcversion}",
   "url": "",

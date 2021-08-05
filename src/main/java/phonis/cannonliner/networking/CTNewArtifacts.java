@@ -1,4 +1,4 @@
-package phonis.cannontracer.networking;
+package phonis.cannonliner.networking;
 
 import java.io.DataInputStream;
 import java.io.DataOutputStream;

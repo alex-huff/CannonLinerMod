@@ -1,13 +1,13 @@
-package phonis.cannontracer.render;
+package phonis.cannonliner.render;
 
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraftforge.client.event.DrawBlockHighlightEvent;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import org.lwjgl.opengl.GL11;
-import phonis.cannontracer.networking.CTLine;
-import phonis.cannontracer.networking.CTVec3;
-import phonis.cannontracer.state.CTLineManager;
-import phonis.cannontracer.state.LineConsumer;
+import phonis.cannonliner.networking.CTLine;
+import phonis.cannonliner.networking.CTVec3;
+import phonis.cannonliner.state.CTLineManager;
+import phonis.cannonliner.state.LineConsumer;
 
 public class CTWorldRenderer {
 

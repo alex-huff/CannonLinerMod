@@ -1,4 +1,4 @@
-package phonis.cannontracer.networking;
+package phonis.cannonliner.networking;
 
 import io.netty.channel.ChannelHandler;
 import io.netty.channel.ChannelHandlerContext;

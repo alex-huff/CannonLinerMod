@@ -1,6 +1,6 @@
-package phonis.cannontracer.state;
+package phonis.cannonliner.state;
 
-import phonis.cannontracer.networking.*;
+import phonis.cannonliner.networking.*;
 
 import java.util.*;
 

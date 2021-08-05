@@ -1,9 +1,9 @@
-package phonis.cannontracer.networking;
+package phonis.cannonliner.networking;
 
 import net.minecraft.network.INetHandler;
-import phonis.cannontracer.CannonTracerMod;
-import phonis.cannontracer.state.CTLineManager;
-import phonis.cannontracer.state.CTState;
+import phonis.cannonliner.CannonLinerMod;
+import phonis.cannonliner.state.CTLineManager;
+import phonis.cannonliner.state.CTState;
 
 import java.io.*;
 
@@ -16,7 +16,7 @@ public class CTChannel extends PluginChannel {
     }
 
     public static void initialize() {
-        CTChannel.instance = new CTChannel(CannonTracerMod.channelName);
+        CTChannel.instance = new CTChannel(CannonLinerMod.channelName);
     }
 
     @Override

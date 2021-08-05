@@ -1,4 +1,4 @@
-package phonis.cannontracer.state;
+package phonis.cannonliner.state;
 
 import java.util.UUID;
 

@@ -1,14 +1,14 @@
-package phonis.cannontracer.listeners;
+package phonis.cannonliner.listeners;
 
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.common.gameevent.TickEvent;
 import net.minecraftforge.fml.common.network.FMLNetworkEvent;
-import phonis.cannontracer.CannonTracerMod;
-import phonis.cannontracer.networking.CTChannel;
-import phonis.cannontracer.networking.CTLineType;
-import phonis.cannontracer.networking.CTRegister;
-import phonis.cannontracer.state.CTLineManager;
-import phonis.cannontracer.state.CTState;
+import phonis.cannonliner.CannonLinerMod;
+import phonis.cannonliner.networking.CTChannel;
+import phonis.cannonliner.networking.CTLineType;
+import phonis.cannonliner.networking.CTRegister;
+import phonis.cannonliner.state.CTLineManager;
+import phonis.cannonliner.state.CTState;
 
 import java.net.InetSocketAddress;
 import java.net.SocketAddress;
@@ -49,7 +49,7 @@ public class ConnectionLifeCycle {
     public void onTick(TickEvent.ClientTickEvent event) {
         if (this.started) {
             if (this.ticks.get() == 20) { // delay it a little before handshake, quite horrible a way to do this
-                CTChannel.instance.send(new CTRegister(CannonTracerMod.protocolVersion));
+                CTChannel.instance.send(new CTRegister(CannonLinerMod.protocolVersion));
                 this.ticks.set(0);
 
                 started = false;
