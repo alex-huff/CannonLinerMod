@@ -32,8 +32,6 @@ public class CTWorldRenderer {
 
         final BlockPos offset = SchemUtils.isTiedToSchem ? SchemUtils.currentPosition.subtract(SchemUtils.schemOrigin) : new BlockPos(0, 0, 0);
 
-        System.out.println(SchemUtils.isTiedToSchem + " " + offset + " " + SchemUtils.schemOrigin + " " + SchemUtils.currentPosition);
-
         CTLineManager.instance.forEachLineInWorld( // iterates through lines in world after getting lock
             new LineConsumer() {
                 @Override
