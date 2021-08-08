@@ -9,13 +9,11 @@ public class CTLine implements CTSerializable {
     public final CTVec3 start;
     public final CTVec3 finish;
     public final CTLineType type;
-    private short ticks;
 
-    public CTLine(CTVec3 start, CTVec3 finish, CTLineType type, short ticks) {
+    public CTLine(CTVec3 start, CTVec3 finish, CTLineType type) {
         this.start = start;
         this.finish = finish;
         this.type = type;
-        this.ticks = ticks;
     }
 
     public float getR() {
@@ -30,14 +28,6 @@ public class CTLine implements CTSerializable {
         return this.type.getRGB().b;
     }
 
-    public short decrementAndGet() {
-        return this.ticks--;
-    }
-
-    public int size() {
-        return 25;
-    }
-
     @Override
     public void toBytes(DataOutputStream dos) throws IOException {
         this.start.toBytes(dos);
@@ -45,12 +35,11 @@ public class CTLine implements CTSerializable {
         this.type.toBytes(dos);
     }
 
-    public static CTLine fromBytes(DataInputStream dis, short ticks) throws IOException {
+    public static CTLine fromBytes(DataInputStream dis) throws IOException {
         return new CTLine(
             CTVec3.fromBytes(dis),
             CTVec3.fromBytes(dis),
-            CTLineType.fromBytes(dis),
-            ticks
+            CTLineType.fromBytes(dis)
         );
     }
 

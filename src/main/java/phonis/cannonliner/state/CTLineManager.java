@@ -27,60 +27,27 @@ public class CTLineManager {
         CTLineManager.playerTypes.add(CTLineType.PLAYER);
     }
 
-    private final Map<UUID, List<CTLine>> lineMap = new TreeMap<UUID, List<CTLine>>();
+    private final List<CTLine> lines = new ArrayList<CTLine>();
 
-    public synchronized void forEachLineInCurrentWorld(LineConsumer consumer) {
-        UUID currentWorld = CTState.currentWorld;
-
-        if (currentWorld == null) return;
-
-        List<CTLine> lines = this.getLinesForWorld(currentWorld);
-
+    public synchronized void forEachLineInWorld(LineConsumer consumer) {
         for (CTLine line : lines) {
             consumer.accept(line);
         }
     }
 
-    private List<CTLine> getLinesForWorld(UUID world) {
-        List<CTLine> lines = this.lineMap.get(world);
-
-        if (lines == null) {
-            lines = new ArrayList<CTLine>();
-
-            this.lineMap.put(world, lines);
-        }
-
-        return lines;
-    }
-
     public synchronized void addArtifacts(CTNewArtifacts ctNewArtifacts) {
         for (CTArtifact artifact : ctNewArtifacts.artifacts) {
-            this.getLinesForWorld(ctNewArtifacts.world).addAll(artifact.makeLines());
+            this.lines.addAll(artifact.makeLines());
         }
     }
 
     public synchronized void addLines(CTNewLines ctNewLines) {
-        this.getLinesForWorld(ctNewLines.world).addAll(ctNewLines.lines);
-    }
-
-    public synchronized void onTick() {
-        for (UUID world : this.lineMap.keySet()) {
-            List<CTLine> lines = this.lineMap.get(world);
-            Iterator<CTLine> iterator = lines.iterator();
-
-            while(iterator.hasNext()) {
-                CTLine line = iterator.next();
-
-                if (line.decrementAndGet() == 0) {
-                    iterator.remove();
-                }
-            }
-        }
+        this.lines.addAll(ctNewLines.lines);
     }
 
     public synchronized void clearByType(CTLineType type) {
         if (type.equals(CTLineType.ALL)) {
-            this.lineMap.clear();
+            this.lines.clear();
 
             return;
         }
@@ -95,16 +62,13 @@ public class CTLineManager {
     }
 
     public synchronized void clearByTypes(Set<CTLineType> types) {
-        for (UUID world : this.lineMap.keySet()) {
-            List<CTLine> lines = this.lineMap.get(world);
-            Iterator<CTLine> iterator = lines.iterator();
+        Iterator<CTLine> iterator = lines.iterator();
 
-            while(iterator.hasNext()) {
-                CTLine line = iterator.next();
+        while(iterator.hasNext()) {
+            CTLine line = iterator.next();
 
-                if (types.contains(line.type)) {
-                    iterator.remove();
-                }
+            if (types.contains(line.type)) {
+                iterator.remove();
             }
         }
     }
