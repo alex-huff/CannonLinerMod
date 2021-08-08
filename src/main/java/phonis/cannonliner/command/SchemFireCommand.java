@@ -9,6 +9,7 @@ import net.minecraft.util.BlockPos;
 import net.minecraft.util.ChatComponentText;
 import phonis.cannonliner.networking.CTLineType;
 import phonis.cannonliner.networking.CannonLinerClient;
+import phonis.cannonliner.schemutils.SchemUtils;
 import phonis.cannonliner.state.CTLineManager;
 
 import java.io.ByteArrayOutputStream;
@@ -75,6 +76,9 @@ public class SchemFireCommand extends CommandBase {
                 dataOutputStream.close();
             }
 
+            SchemUtils.schemOrigin = new BlockPos(position);
+            SchemUtils.currentPosition = position;
+            SchemUtils.isTiedToSchem = true;
             CannonLinerClient.currentCannonLinerClient = new CannonLinerClient(position, baos.toByteArray());
             final CannonLinerClient cannonLinerClient = CannonLinerClient.currentCannonLinerClient;
 

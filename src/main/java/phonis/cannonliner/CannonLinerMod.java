@@ -5,6 +5,7 @@ import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.Mod.EventHandler;
 import net.minecraftforge.fml.common.event.FMLInitializationEvent;
+import phonis.cannonliner.command.ClearTraceCommand;
 import phonis.cannonliner.command.FireNearCommand;
 import phonis.cannonliner.command.SchemFireCommand;
 import phonis.cannonliner.render.CTWorldRenderer;
@@ -20,6 +21,7 @@ public class CannonLinerMod {
         MinecraftForge.EVENT_BUS.register(new CTWorldRenderer());
         ClientCommandHandler.instance.registerCommand(new SchemFireCommand());
         ClientCommandHandler.instance.registerCommand(new FireNearCommand());
+        ClientCommandHandler.instance.registerCommand(new ClearTraceCommand());
     }
 
 }

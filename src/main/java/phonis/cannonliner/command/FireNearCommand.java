@@ -9,6 +9,7 @@ import net.minecraft.util.BlockPos;
 import net.minecraft.util.ChatComponentText;
 import phonis.cannonliner.networking.CTLineType;
 import phonis.cannonliner.networking.CannonLinerClient;
+import phonis.cannonliner.schemutils.SchemUtils;
 import phonis.cannonliner.state.CTLineManager;
 
 import java.io.ByteArrayOutputStream;
@@ -64,6 +65,7 @@ public class FireNearCommand extends CommandBase {
                 dataOutputStream.close();
             }
 
+            SchemUtils.isTiedToSchem = false;
             CannonLinerClient.currentCannonLinerClient = new CannonLinerClient(startPosition, baos.toByteArray());
             final CannonLinerClient cannonLinerClient = CannonLinerClient.currentCannonLinerClient;
 
