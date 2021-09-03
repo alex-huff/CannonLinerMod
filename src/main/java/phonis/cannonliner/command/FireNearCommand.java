@@ -66,7 +66,7 @@ public class FireNearCommand extends CommandBase {
             }
 
             SchemUtils.isTiedToSchem = false;
-            CannonLinerClient.currentCannonLinerClient = new CannonLinerClient(startPosition, baos.toByteArray());
+            CannonLinerClient.currentCannonLinerClient = new CannonLinerClient(startPosition, middle, baos.toByteArray());
             final CannonLinerClient cannonLinerClient = CannonLinerClient.currentCannonLinerClient;
 
             new Thread() {

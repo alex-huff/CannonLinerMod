@@ -17,17 +17,19 @@ public class CannonLinerClient {
     private final String serverIP;
     private final int port;
     private final BlockPos blockPos;
+    private final BlockPos middle;
     private final byte[] schemData;
     private final Socket socket;
 
-    public CannonLinerClient(BlockPos blockPos, byte[] schemData) {
-        this("localhost", 25566, blockPos, schemData);
+    public CannonLinerClient(BlockPos blockPos, BlockPos middle, byte[] schemData) {
+        this("localhost", 25566, blockPos, middle, schemData);
     }
 
-    public CannonLinerClient(String serverIP, int port, BlockPos blockPos, byte[] schemData) {
+    public CannonLinerClient(String serverIP, int port, BlockPos blockPos, BlockPos middle, byte[] schemData) {
         this.serverIP = serverIP;
         this.port = port;
         this.blockPos = blockPos;
+        this.middle = middle;
         this.schemData = schemData;
         this.socket = new Socket();
     }
@@ -53,6 +55,9 @@ public class CannonLinerClient {
             outputStream.writeInt(this.blockPos.getX());
             outputStream.writeInt(this.blockPos.getY());
             outputStream.writeInt(this.blockPos.getZ());
+            outputStream.writeDouble(this.middle.getX());
+            outputStream.writeDouble(this.middle.getY());
+            outputStream.writeDouble(this.middle.getZ());
             outputStream.writeInt(this.schemData.length);
             outputStream.write(this.schemData);
             outputStream.flush();

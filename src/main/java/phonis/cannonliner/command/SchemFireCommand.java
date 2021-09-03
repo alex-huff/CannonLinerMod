@@ -40,6 +40,7 @@ public class SchemFireCommand extends CommandBase {
                 CannonLinerClient.currentCannonLinerClient.close();
             }
 
+            BlockPos middle = sender.getPosition();
             Class<?> renderSchematicClass = Class.forName("com.github.lunatrius.schematica.client.renderer.RenderSchematic");
             Field worldField = renderSchematicClass.getDeclaredField("world");
 
@@ -79,7 +80,7 @@ public class SchemFireCommand extends CommandBase {
             SchemUtils.schemOrigin = new BlockPos(position);
             SchemUtils.currentPosition = position;
             SchemUtils.isTiedToSchem = true;
-            CannonLinerClient.currentCannonLinerClient = new CannonLinerClient(position, baos.toByteArray());
+            CannonLinerClient.currentCannonLinerClient = new CannonLinerClient(position, middle, baos.toByteArray());
             final CannonLinerClient cannonLinerClient = CannonLinerClient.currentCannonLinerClient;
 
             new Thread() {
