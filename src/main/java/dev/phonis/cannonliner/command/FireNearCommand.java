@@ -1,16 +1,16 @@
-package phonis.cannonliner.command;
+package dev.phonis.cannonliner.command;
 
 import com.github.lunatrius.schematica.api.ISchematic;
+import dev.phonis.cannonliner.networking.CTLineType;
+import dev.phonis.cannonliner.networking.CannonLinerClient;
+import dev.phonis.cannonliner.schemutils.SchemUtils;
 import net.minecraft.command.CommandBase;
 import net.minecraft.command.ICommandSender;
 import net.minecraft.nbt.NBTBase;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.util.BlockPos;
 import net.minecraft.util.ChatComponentText;
-import phonis.cannonliner.networking.CTLineType;
-import phonis.cannonliner.networking.CannonLinerClient;
-import phonis.cannonliner.schemutils.SchemUtils;
-import phonis.cannonliner.state.CTLineManager;
+import dev.phonis.cannonliner.state.CTLineManager;
 
 import java.io.ByteArrayOutputStream;
 import java.io.DataOutput;

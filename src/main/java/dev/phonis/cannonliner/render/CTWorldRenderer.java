@@ -1,14 +1,14 @@
-package phonis.cannonliner.render;
+package dev.phonis.cannonliner.render;
 
+import dev.phonis.cannonliner.networking.CTLine;
+import dev.phonis.cannonliner.schemutils.SchemUtils;
+import dev.phonis.cannonliner.state.CTLineManager;
+import dev.phonis.cannonliner.state.LineConsumer;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.util.BlockPos;
 import net.minecraftforge.client.event.DrawBlockHighlightEvent;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import org.lwjgl.opengl.GL11;
-import phonis.cannonliner.networking.CTLine;
-import phonis.cannonliner.schemutils.SchemUtils;
-import phonis.cannonliner.state.CTLineManager;
-import phonis.cannonliner.state.LineConsumer;
 
 public class CTWorldRenderer {
 

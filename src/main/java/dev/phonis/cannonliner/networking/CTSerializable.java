@@ -1,4 +1,4 @@
-package phonis.cannonliner.networking;
+package dev.phonis.cannonliner.networking;
 
 import java.io.DataOutputStream;
 import java.io.IOException;

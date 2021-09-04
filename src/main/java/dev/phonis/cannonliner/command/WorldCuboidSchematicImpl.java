@@ -1,4 +1,4 @@
-package phonis.cannonliner.command;
+package dev.phonis.cannonliner.command;
 
 import com.github.lunatrius.schematica.api.ISchematic;
 import net.minecraft.block.state.IBlockState;

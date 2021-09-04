@@ -1,7 +1,7 @@
-package phonis.cannonliner.networking;
+package dev.phonis.cannonliner.networking;
 
 import net.minecraft.util.BlockPos;
-import phonis.cannonliner.state.CTLineManager;
+import dev.phonis.cannonliner.state.CTLineManager;
 
 import java.io.ByteArrayInputStream;
 import java.io.DataInputStream;

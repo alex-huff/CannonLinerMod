@@ -1,9 +1,9 @@
-package phonis.cannonliner.command;
+package dev.phonis.cannonliner.command;
 
+import dev.phonis.cannonliner.networking.CTLineType;
 import net.minecraft.command.CommandBase;
 import net.minecraft.command.ICommandSender;
-import phonis.cannonliner.networking.CTLineType;
-import phonis.cannonliner.state.CTLineManager;
+import dev.phonis.cannonliner.state.CTLineManager;
 
 public class ClearTraceCommand extends CommandBase {
 

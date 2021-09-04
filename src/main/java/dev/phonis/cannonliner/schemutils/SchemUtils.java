@@ -1,4 +1,4 @@
-package phonis.cannonliner.schemutils;
+package dev.phonis.cannonliner.schemutils;
 
 import net.minecraft.util.BlockPos;
 

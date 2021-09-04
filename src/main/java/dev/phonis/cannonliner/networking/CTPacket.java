@@ -1,4 +1,4 @@
-package phonis.cannonliner.networking;
+package dev.phonis.cannonliner.networking;
 
 public interface CTPacket extends CTSerializable {
 
