@@ -46,7 +46,7 @@ public class WorldCuboidSchematicImpl implements ISchematic {
 
     @Override
     public List<TileEntity> getTileEntities() {
-        List<TileEntity> tileEntities = new ArrayList<TileEntity>();
+        List<TileEntity> tileEntities = new ArrayList<>();
 
         for (int x = this.startPos.getX(); x < this.startPos.getX() + width; x++) {
             for (int y = this.startPos.getY(); y < this.startPos.getY() + height; y++) {
@@ -75,7 +75,7 @@ public class WorldCuboidSchematicImpl implements ISchematic {
 
     @Override
     public List<Entity> getEntities() {
-        return new ArrayList<Entity>();
+        return new ArrayList<>();
     }
 
     @Override

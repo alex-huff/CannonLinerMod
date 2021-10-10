@@ -3,6 +3,7 @@ package dev.phonis.cannonliner.state;
 import dev.phonis.cannonliner.networking.*;
 
 import java.util.*;
+import java.util.function.Consumer;
 
 public class CTLineManager {
 
@@ -12,24 +13,24 @@ public class CTLineManager {
     private static Set<CTLineType> playerTypes;
 
     static {
-        CTLineManager.tntTypes = new TreeSet<CTLineType>();
+        CTLineManager.tntTypes = new TreeSet<>();
 
         CTLineManager.tntTypes.add(CTLineType.TNT);
         CTLineManager.tntTypes.add(CTLineType.TNTENDPOS);
 
-        CTLineManager.sandTypes = new TreeSet<CTLineType>();
+        CTLineManager.sandTypes = new TreeSet<>();
 
         CTLineManager.sandTypes.add(CTLineType.SAND);
         CTLineManager.sandTypes.add(CTLineType.SANDENDPOS);
 
-        CTLineManager.playerTypes = new TreeSet<CTLineType>();
+        CTLineManager.playerTypes = new TreeSet<>();
 
         CTLineManager.playerTypes.add(CTLineType.PLAYER);
     }
 
-    private final List<CTLine> lines = new ArrayList<CTLine>();
+    private final List<CTLine> lines = new ArrayList<>();
 
-    public synchronized void forEachLineInWorld(LineConsumer consumer) {
+    public synchronized void forEachLineInWorld(Consumer<CTLine> consumer) {
         for (CTLine line : lines) {
             consumer.accept(line);
         }
@@ -62,15 +63,7 @@ public class CTLineManager {
     }
 
     public synchronized void clearByTypes(Set<CTLineType> types) {
-        Iterator<CTLine> iterator = lines.iterator();
-
-        while(iterator.hasNext()) {
-            CTLine line = iterator.next();
-
-            if (types.contains(line.type)) {
-                iterator.remove();
-            }
-        }
+        lines.removeIf(line -> types.contains(line.type));
     }
 
 }

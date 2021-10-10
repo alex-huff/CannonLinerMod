@@ -13,7 +13,7 @@ public class CTArtifact implements CTSerializable {
     private static List<CTEdge> boxEdges;
 
     static {
-        CTArtifact.boxEdges = new ArrayList<CTEdge>(12);
+        CTArtifact.boxEdges = new ArrayList<>(12);
         CTVec3 vu1 = new CTVec3(-.49d, .49d, -.49d);
         CTVec3 vu2 = new CTVec3(.49d, .49d, -.49d);
         CTVec3 vu3 = new CTVec3(-.49d, .49d, .49d);
@@ -48,7 +48,7 @@ public class CTArtifact implements CTSerializable {
     }
 
     public List<CTLine> makeLines() {
-        List<CTLine> lines = new ArrayList<CTLine>();
+        List<CTLine> lines = new ArrayList<>();
 
         if (this.artifactType.equals(CTArtifactType.BLOCKBOX)) {
             for (CTEdge edge : CTArtifact.boxEdges) {

@@ -30,7 +30,7 @@ public class CTNewLines implements CTPacket {
     }
 
     public static List<CTLine> getLines(DataInputStream dis) throws IOException {
-        List<CTLine> ctLines = new ArrayList<CTLine>();
+        List<CTLine> ctLines = new ArrayList<>();
         short length = dis.readShort();
 
         for (short i = 0; i < length; i++) {

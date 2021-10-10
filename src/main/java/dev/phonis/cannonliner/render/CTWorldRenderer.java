@@ -1,9 +1,7 @@
 package dev.phonis.cannonliner.render;
 
-import dev.phonis.cannonliner.networking.CTLine;
 import dev.phonis.cannonliner.schemutils.SchemUtils;
 import dev.phonis.cannonliner.state.CTLineManager;
-import dev.phonis.cannonliner.state.LineConsumer;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.util.BlockPos;
 import net.minecraftforge.client.event.DrawBlockHighlightEvent;
@@ -33,15 +31,12 @@ public class CTWorldRenderer {
         final BlockPos offset = SchemUtils.isTiedToSchem ? SchemUtils.currentPosition.subtract(SchemUtils.schemOrigin) : new BlockPos(0, 0, 0);
 
         CTLineManager.instance.forEachLineInWorld( // iterates through lines in world after getting lock
-            new LineConsumer() {
-                @Override
-                public void accept(CTLine line) {
-                    GL11.glColor4f(line.getR(), line.getG(), line.getB(), 1f);
-                    GL11.glBegin(0x3);
-                    GL11.glVertex3d(line.start.x + offset.getX(), line.start.y + offset.getY(), line.start.z + offset.getZ());
-                    GL11.glVertex3d(line.finish.x + offset.getX(), line.finish.y + offset.getY(), line.finish.z + offset.getZ());
-                    GL11.glEnd();
-                }
+            line -> {
+                GL11.glColor4f(line.getR(), line.getG(), line.getB(), 1f);
+                GL11.glBegin(0x3);
+                GL11.glVertex3d(line.start.x + offset.getX(), line.start.y + offset.getY(), line.start.z + offset.getZ());
+                GL11.glVertex3d(line.finish.x + offset.getX(), line.finish.y + offset.getY(), line.finish.z + offset.getZ());
+                GL11.glEnd();
             }
         );
         GL11.glEnable(GL11.GL_TEXTURE_2D);

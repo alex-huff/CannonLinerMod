@@ -35,7 +35,7 @@ public class CTNewArtifacts implements CTPacket {
     }
 
     private static List<CTArtifact> getArtifacts(DataInputStream dis) throws IOException {
-        List<CTArtifact> ctArtifacts = new ArrayList<CTArtifact>();
+        List<CTArtifact> ctArtifacts = new ArrayList<>();
         short length = dis.readShort();
 
         for (short i = 0; i < length; i++) {
