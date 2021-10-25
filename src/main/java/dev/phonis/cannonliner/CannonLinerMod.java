@@ -6,6 +6,7 @@ import dev.phonis.cannonliner.command.SchemFireCommand;
 import dev.phonis.cannonliner.keybinds.KeyEvent;
 import dev.phonis.cannonliner.keybinds.Keybinds;
 import dev.phonis.cannonliner.render.ToggleableBlockFluidRenderer;
+import dev.phonis.cannonliner.render.ToggleableBlockModelRenderer;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.BlockRendererDispatcher;
 import net.minecraftforge.client.ClientCommandHandler;
@@ -16,6 +17,7 @@ import net.minecraftforge.fml.common.event.FMLInitializationEvent;
 import dev.phonis.cannonliner.render.CTWorldRenderer;
 
 import java.lang.reflect.Field;
+import java.util.Arrays;
 
 @Mod(modid = CannonLinerMod.MODID, version = CannonLinerMod.VERSION)
 public class CannonLinerMod {
@@ -35,9 +37,12 @@ public class CannonLinerMod {
         Class<?> blockRendererClass = Class.forName("net.minecraft.client.renderer.BlockRendererDispatcher");
         BlockRendererDispatcher blockRenderer = Minecraft.getMinecraft().getBlockRendererDispatcher();
         Field fluidRendererField = blockRendererClass.getDeclaredField("field_175025_e");
+        Field blockRendererField = blockRendererClass.getDeclaredField("field_175027_c");
 
         fluidRendererField.setAccessible(true);
+        blockRendererField.setAccessible(true);
         fluidRendererField.set(blockRenderer, new ToggleableBlockFluidRenderer());
+        blockRendererField.set(blockRenderer, new ToggleableBlockModelRenderer());
     }
 
 }

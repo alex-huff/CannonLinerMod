@@ -11,7 +11,7 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 @SideOnly(Side.CLIENT)
 public class ToggleableBlockFluidRenderer extends BlockFluidRenderer {
 
-    public static boolean renderLiquid = false;
+    public static boolean renderLiquid = true;
 
     @Override
     public boolean renderFluid(IBlockAccess blockAccess, IBlockState blockStateIn, BlockPos blockPosIn, WorldRenderer worldRendererIn) {
