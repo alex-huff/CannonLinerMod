@@ -39,6 +39,8 @@ public class RightClickEvent {
 
             if (heldItem instanceof ItemBucket) {
                 RightClickEvent.canceled = !(schemBlock instanceof BlockLiquid);
+
+                playerInteractEvent.setCanceled(RightClickEvent.canceled);
             } else if (heldItem instanceof ItemBlock) {
                 Block heldBlock = Block.getBlockFromItem(heldItemStack.getItem());
 
