@@ -3,6 +3,8 @@ package event;
 import com.github.lunatrius.schematica.api.ISchematic;
 import dev.phonis.cannonliner.schemutils.SchemUtils;
 import net.minecraft.block.Block;
+import net.minecraft.item.Item;
+import net.minecraft.item.ItemStack;
 import net.minecraft.util.BlockPos;
 import net.minecraftforge.event.entity.player.PlayerInteractEvent;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
@@ -21,7 +23,8 @@ public class RightClickEvent {
 
             ISchematic schem = schematica.getLeft();
             BlockPos position = schematica.getRight();
-            Block heldBlock = Block.getBlockFromItem(playerInteractEvent.entityPlayer.getHeldItem().getItem());
+            ItemStack heldItemStack = playerInteractEvent.entityPlayer.getHeldItem();
+            Block heldBlock = heldItemStack != null ? Block.getBlockFromItem(heldItemStack.getItem()) : null;
             Block schemBlock = schem.getBlockState(playerInteractEvent.pos.subtract(position).add(playerInteractEvent.face.getDirectionVec())).getBlock();
 
             if (schemBlock != null && !schemBlock.equals(heldBlock)) {
