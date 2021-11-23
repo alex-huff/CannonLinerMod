@@ -69,12 +69,7 @@ public class FireNearCommand extends CommandBase {
             CannonLinerClient.currentCannonLinerClient = new CannonLinerClient(startPosition, middle, baos.toByteArray());
             final CannonLinerClient cannonLinerClient = CannonLinerClient.currentCannonLinerClient;
 
-            new Thread() {
-                @Override
-                public void run() {
-                    cannonLinerClient.start();
-                }
-            }.start();
+            new Thread(cannonLinerClient::start).start();
             sender.getCommandSenderEntity().addChatMessage(new ChatComponentText("Firing schematica"));
         } catch (Throwable e) {
             e.printStackTrace();

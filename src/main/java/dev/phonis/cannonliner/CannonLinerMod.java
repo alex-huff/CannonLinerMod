@@ -5,8 +5,11 @@ import dev.phonis.cannonliner.command.FireNearCommand;
 import dev.phonis.cannonliner.command.SchemFireCommand;
 import dev.phonis.cannonliner.keybinds.KeyEvent;
 import dev.phonis.cannonliner.keybinds.Keybinds;
+import dev.phonis.cannonliner.render.ClockRender;
 import dev.phonis.cannonliner.render.ToggleableBlockFluidRenderer;
 import dev.phonis.cannonliner.render.ToggleableBlockModelRenderer;
+import event.RightClickEvent;
+import event.ClientChatEvent;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.BlockRendererDispatcher;
 import net.minecraftforge.client.ClientCommandHandler;
@@ -17,7 +20,6 @@ import net.minecraftforge.fml.common.event.FMLInitializationEvent;
 import dev.phonis.cannonliner.render.CTWorldRenderer;
 
 import java.lang.reflect.Field;
-import java.util.Arrays;
 
 @Mod(modid = CannonLinerMod.MODID, version = CannonLinerMod.VERSION)
 public class CannonLinerMod {
@@ -30,6 +32,9 @@ public class CannonLinerMod {
         Keybinds.register();
         MinecraftForge.EVENT_BUS.register(new CTWorldRenderer());
         MinecraftForge.EVENT_BUS.register(new KeyEvent());
+        MinecraftForge.EVENT_BUS.register(new ClockRender());
+        MinecraftForge.EVENT_BUS.register(new ClientChatEvent());
+        MinecraftForge.EVENT_BUS.register(new RightClickEvent());
         ClientCommandHandler.instance.registerCommand(new SchemFireCommand());
         ClientCommandHandler.instance.registerCommand(new FireNearCommand());
         ClientCommandHandler.instance.registerCommand(new ClearTraceCommand());
